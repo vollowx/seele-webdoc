@@ -69,8 +69,9 @@
       })();
     </script>
 
+    <sw-toolbar base-url="{{ siteUrl }}" github-url="{{ githubUrl }}" sourcehut-url="{{ sourcehutUrl }}"></sw-toolbar>
+
     <main>
-      <sw-toolbar base-url="{{ siteUrl }}" github-url="{{ githubUrl }}" sourcehut-url="{{ sourcehutUrl }}"></sw-toolbar>
       {{ content | injectToc(toc) | safe }}
     </main>
 
@@ -80,7 +81,7 @@
         <a
           href="{{ seeleVersion.npmUrl }}"
           target="_blank" rel="noopener noreferrer"
-          aria-label="View @vollowx/seele version {{ seeleVersion.version }} on npm"
+          aria-label="View @vollowx/seele on npm"
         >
           @vollowx/seele@{{ seeleVersion.version }}
         </a>
