@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="{{ lang or 'en' }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title or page.fileSlug }}</title>
+    <meta name="description" content="{{ desc or 'Documentation of SEELE the web components library.' }}" />
+    <meta name="keywords" content="seele, web components, documentation, components, library, ui, design system" />
+    <meta name="author" content="Vollow" />
+
+    <link rel="canonical" href="{{ siteUrl }}{{ page.url }}" />
+{% for langCode, langData in languages %}
+    <link rel="alternate" hreflang="{{ langCode }}" href="{{ siteUrl }}/{{ langCode }}{{ page.url | stripLang }}" />
+{% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ siteUrl }}/en-US{{ page.url | stripLang }}" />
+
+    <style>{% inlineCss ".tmp/client/client.css" %}</style>
+    <script>
+      try {
+        const stored = localStorage.getItem("sw-theme-preference");
+        const themeMode = stored === "light" || stored === "dark" || stored === "auto" ? stored : "auto";
+        if (themeMode === "auto") {
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.dataset["mdTheme"] = prefersDark ? "dark" : "light";
+        } else {
+          document.documentElement.dataset["mdTheme"] = themeMode;
+        }
+      } catch (e) {}
+
+      try {
+        const storedDir = localStorage.getItem("sw-direction-preference");
+        document.documentElement.dir = (storedDir === "rtl" || storedDir === "ltr") ? storedDir : "ltr";
+      } catch (e) {
+        document.documentElement.dir = "ltr";
+      }
+    </script>
+    <!-- MUST be loaded before any lit components to enable hydration -->
+    <script type="module" src="{{ siteUrl }}client/lit-hydrate-support.js"></script>
+    <!-- Load components and interactive logic -->
+    <script type="module" src="{{ siteUrl }}client/client.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style> body[dsd-pending] { display: none; } </style>
+    <noscript>
+      <style> body[dsd-pending] { display: block !important; } </style>
+    </noscript>
+  </head>
+  <body dsd-pending>
+    <script>
+      (function() {
+        if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRootMode')) {
+          (function attachShadowRoots(root) {
+            root.querySelectorAll("template[shadowrootmode]").forEach(template => {
+              const mode = template.getAttribute("shadowrootmode");
+              const shadowRoot = template.parentNode.attachShadow({ mode });
+              shadowRoot.appendChild(template.content);
+              template.remove();
+              attachShadowRoots(shadowRoot);
+            });
+          })(document);
+        }
+        document.body.removeAttribute('dsd-pending');
+      })();
+    </script>
+
+    <main>
+      <sw-toolbar base-url="{{ siteUrl }}" github-url="{{ githubUrl }}" sourcehut-url="{{ sourcehutUrl }}"></sw-toolbar>
+      {{ content | injectToc(toc) | safe }}
+    </main>
+
+    <footer>
+      <span>
+        presenting
+        <a
+          href="{{ seeleVersion.npmUrl }}"
+          target="_blank" rel="noopener noreferrer"
+          aria-label="View @vollowx/seele version {{ seeleVersion.version }} on npm"
+        >
+          @vollowx/seele@{{ seeleVersion.version }}
+        </a>
+      </span>
+    </footer>
+  </body>
+</html>

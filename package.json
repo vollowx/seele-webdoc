@@ -1,0 +1,28 @@
+{
+  "name": "seele-webdoc",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun run build:ssr-entrypoint && bun run build:client && bun run build:eleventy",
+    "build:ssr-entrypoint": "bun ./scripts/build-ssr.js",
+    "build:client": "bun ./scripts/build-client.js",
+    "build:eleventy": "eleventy --config=eleventy.config.js",
+    "preview": "wds --root-dir dist"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@lit-labs/eleventy-plugin-lit": "^1.0.6",
+    "@lit-labs/ssr": "^4.1.0",
+    "@lit-labs/ssr-client": "^1.1.8",
+    "@types/bun": "latest",
+    "@web/dev-server": "^0.4.6",
+    "esbuild": "^0.27.7",
+    "html-minifier": "^4.0.0",
+    "lightningcss": "^1.32.0"
+  },
+  "dependencies": {
+    "@vollowx/seele": "^0.12.9",
+    "iconify-icon": "^3.0.2"
+  }
+}

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="{{ lang or 'en' }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <title>{{ title or page.fileSlug }}</title>
+    <meta name="description" content="{{ desc or 'Documentation of SEELE the web components library.' }}" />
+    <meta name="keywords" content="seele, web components, documentation, components, library, ui, design system" />
+    <meta name="author" content="Vollow" />
+
+    <link rel="canonical" href="{{ siteUrl }}{{ page.url }}" />
+{% for langCode, langData in languages %}
+    <link rel="alternate" hreflang="{{ langCode }}" href="{{ siteUrl }}/{{ langCode }}{{ page.url | stripLang }}" />
+{% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ siteUrl }}/en-US{{ page.url | stripLang }}" />
+  </head>
+  <body>
+    <main>
+      {{ content | injectToc(toc) | safe }}
+    </main>
+  </body>
+</html>

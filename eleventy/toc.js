@@ -1,0 +1,141 @@
+/**
+ * @param {object} eleventyConfig
+ */
+export function addTocFilter(eleventyConfig) {
+  eleventyConfig.addFilter('injectToc', function (content, tocEnabled) {
+    const isEnabled = tocEnabled !== 'false' && tocEnabled !== false;
+
+    function escapeHtml(text) {
+      const htmlEscapes = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      };
+      return text.replace(/[&<>"']/g, (char) => htmlEscapes[char]);
+    }
+
+    function generateId(text, level, higherIds) {
+      const selfId = text
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+
+      higherIds[level - 1] = selfId;
+      return higherIds
+        .slice(0, level)
+        .filter((id) => id)
+        .join('-');
+    }
+
+    const headings = [];
+    const headingRegex = /<h([2-6])([^>]*)>(.*?)<\/h\1>/g;
+    let match;
+
+    while ((match = headingRegex.exec(content)) !== null) {
+      const level = parseInt(match[1]);
+      const attributes = match[2];
+      const fullHtml = match[3];
+
+      // Remove all HTML tags completely, then remove any remaining angle,
+      // brackets, and remove complete HTML tags in multiple passes to handle
+      // nested/malformed tags
+      let text = fullHtml;
+      let previousText;
+      do {
+        previousText = text;
+        text = text.replace(/<[^>]*>/g, '');
+      } while (text !== previousText);
+      // Remove any remaining angle brackets to prevent injection
+      text = text.replace(/[<>]/g, '');
+
+      const offset = match.index;
+      headings.push({ level, text, fullHtml, attributes, offset });
+    }
+
+    if (headings.length === 0)
+      return content;
+
+    let tocHtml = '<nav id="toc" aria-label="Table of contents"><ol>';
+    let currentLevel = 2;
+    const levelStack = [2];
+    let modifiedContent = content;
+    const higherIds = [];
+
+    const headingIds = [];
+    headings.forEach((heading) => {
+      const { level, text } = heading;
+      const formattedId = generateId(text, level, higherIds);
+      headingIds.push(formattedId);
+    });
+
+    for (let i = headings.length - 1; i >= 0; i--) {
+      const heading = headings[i];
+      const { level, fullHtml } = heading;
+      const formattedId = headingIds[i];
+
+      const originalHeading = `<h${level}${heading.attributes}>${fullHtml}</h${level}>`;
+      const newHeading = `<h${level} id="${formattedId}"${heading.attributes}>${fullHtml}</h${level}>`;
+
+      const before = modifiedContent.substring(0, heading.offset);
+      const after = modifiedContent.substring(
+        heading.offset + originalHeading.length,
+      );
+      modifiedContent = before + newHeading + after;
+    }
+
+    if (!isEnabled) {
+      return modifiedContent;
+    }
+
+    headings.forEach((heading, index) => {
+      const { level, text } = heading;
+      const formattedId = headingIds[index];
+
+      // Adjust for deeper levels
+      if (level > currentLevel) {
+        for (let i = currentLevel; i < level; i++) {
+          tocHtml += '<ol>';
+          levelStack.push(level);
+        }
+      } else if (level < currentLevel) {
+        while (levelStack[levelStack.length - 1] > level) {
+          tocHtml += '</ol></li>';
+          levelStack.pop();
+        }
+      } else if (index > 0) {
+        tocHtml += '</li>';
+      }
+
+      tocHtml += `<li><a href="#${formattedId}">${escapeHtml(text)}</a>`;
+      currentLevel = level;
+    });
+
+    while (levelStack.length > 1) {
+      tocHtml += '</li></ol>';
+      levelStack.pop();
+    }
+
+    tocHtml += '</li></ol></nav>';
+
+    let contentWithToc = modifiedContent;
+    const h1Match = modifiedContent.match(/<h1[^>]*>.*?<\/h1>/);
+
+    if (h1Match) {
+      const h1End = h1Match.index + h1Match[0].length;
+      contentWithToc =
+        modifiedContent.slice(0, h1End) +
+        '\n' +
+        tocHtml +
+        '\n' +
+        modifiedContent.slice(h1End);
+    } else {
+      contentWithToc = tocHtml + '\n' + modifiedContent;
+    }
+
+    return contentWithToc;
+  });
+}

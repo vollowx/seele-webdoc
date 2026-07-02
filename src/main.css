@@ -1,0 +1,338 @@
+@import '../node_modules/@vollowx/seele/src/m3/system/base.css';
+/* TODO: Resolve regular Node paths in build-client.js */
+
+:root {
+  --md-sys-typography-family: Rubik, sans-serif;
+}
+
+:root {
+  --md-sys-color-primary: rgb(62 104 55);
+  --md-sys-color-surface-tint: rgb(62 104 55);
+  --md-sys-color-on-primary: rgb(255 255 255);
+  --md-sys-color-primary-container: rgb(190 240 178);
+  --md-sys-color-on-primary-container: rgb(38 80 34);
+  --md-sys-color-secondary: rgb(83 99 78);
+  --md-sys-color-on-secondary: rgb(255 255 255);
+  --md-sys-color-secondary-container: rgb(214 232 206);
+  --md-sys-color-on-secondary-container: rgb(60 75 56);
+  --md-sys-color-tertiary: rgb(56 101 105);
+  --md-sys-color-on-tertiary: rgb(255 255 255);
+  --md-sys-color-tertiary-container: rgb(188 235 239);
+  --md-sys-color-on-tertiary-container: rgb(30 77 81);
+  --md-sys-color-error: rgb(186 26 26);
+  --md-sys-color-on-error: rgb(255 255 255);
+  --md-sys-color-error-container: rgb(255 218 214);
+  --md-sys-color-on-error-container: rgb(147 0 10);
+  --md-sys-color-background: rgb(247 251 241);
+  --md-sys-color-on-background: rgb(25 29 23);
+  --md-sys-color-surface: rgb(247 251 241);
+  --md-sys-color-on-surface: rgb(25 29 23);
+  --md-sys-color-surface-variant: rgb(222 228 216);
+  --md-sys-color-on-surface-variant: rgb(66 73 63);
+  --md-sys-color-outline: rgb(115 121 110);
+  --md-sys-color-outline-variant: rgb(194 200 188);
+  --md-sys-color-shadow: rgb(0 0 0);
+  --md-sys-color-scrim: rgb(0 0 0);
+  --md-sys-color-inverse-surface: rgb(45 50 43);
+  --md-sys-color-inverse-on-surface: rgb(239 242 232);
+  --md-sys-color-inverse-primary: rgb(163 211 152);
+  --md-sys-color-primary-fixed: rgb(190 240 178);
+  --md-sys-color-on-primary-fixed: rgb(0 34 2);
+  --md-sys-color-primary-fixed-dim: rgb(163 211 152);
+  --md-sys-color-on-primary-fixed-variant: rgb(38 80 34);
+  --md-sys-color-secondary-fixed: rgb(214 232 206);
+  --md-sys-color-on-secondary-fixed: rgb(17 31 15);
+  --md-sys-color-secondary-fixed-dim: rgb(186 204 178);
+  --md-sys-color-on-secondary-fixed-variant: rgb(60 75 56);
+  --md-sys-color-tertiary-fixed: rgb(188 235 239);
+  --md-sys-color-on-tertiary-fixed: rgb(0 32 34);
+  --md-sys-color-tertiary-fixed-dim: rgb(160 207 211);
+  --md-sys-color-on-tertiary-fixed-variant: rgb(30 77 81);
+  --md-sys-color-surface-dim: rgb(216 219 210);
+  --md-sys-color-surface-bright: rgb(247 251 241);
+  --md-sys-color-surface-container-lowest: rgb(255 255 255);
+  --md-sys-color-surface-container-low: rgb(242 245 235);
+  --md-sys-color-surface-container: rgb(236 239 230);
+  --md-sys-color-surface-container-high: rgb(230 233 224);
+  --md-sys-color-surface-container-highest: rgb(224 228 218);
+  color-scheme: light;
+}
+
+:root[data-md-theme='dark'] {
+  --md-sys-color-primary: rgb(163 211 152);
+  --md-sys-color-surface-tint: rgb(163 211 152);
+  --md-sys-color-on-primary: rgb(14 56 13);
+  --md-sys-color-primary-container: rgb(38 80 34);
+  --md-sys-color-on-primary-container: rgb(190 240 178);
+  --md-sys-color-secondary: rgb(186 204 178);
+  --md-sys-color-on-secondary: rgb(38 52 34);
+  --md-sys-color-secondary-container: rgb(60 75 56);
+  --md-sys-color-on-secondary-container: rgb(214 232 206);
+  --md-sys-color-tertiary: rgb(160 207 211);
+  --md-sys-color-on-tertiary: rgb(0 54 58);
+  --md-sys-color-tertiary-container: rgb(30 77 81);
+  --md-sys-color-on-tertiary-container: rgb(188 235 239);
+  --md-sys-color-error: rgb(255 180 171);
+  --md-sys-color-on-error: rgb(105 0 5);
+  --md-sys-color-error-container: rgb(147 0 10);
+  --md-sys-color-on-error-container: rgb(255 218 214);
+  --md-sys-color-background: rgb(17 20 15);
+  --md-sys-color-on-background: rgb(224 228 218);
+  --md-sys-color-surface: rgb(17 20 15);
+  --md-sys-color-on-surface: rgb(224 228 218);
+  --md-sys-color-surface-variant: rgb(66 73 63);
+  --md-sys-color-on-surface-variant: rgb(194 200 188);
+  --md-sys-color-outline: rgb(140 147 136);
+  --md-sys-color-outline-variant: rgb(66 73 63);
+  --md-sys-color-shadow: rgb(0 0 0);
+  --md-sys-color-scrim: rgb(0 0 0);
+  --md-sys-color-inverse-surface: rgb(224 228 218);
+  --md-sys-color-inverse-on-surface: rgb(45 50 43);
+  --md-sys-color-inverse-primary: rgb(62 104 55);
+  --md-sys-color-primary-fixed: rgb(190 240 178);
+  --md-sys-color-on-primary-fixed: rgb(0 34 2);
+  --md-sys-color-primary-fixed-dim: rgb(163 211 152);
+  --md-sys-color-on-primary-fixed-variant: rgb(38 80 34);
+  --md-sys-color-secondary-fixed: rgb(214 232 206);
+  --md-sys-color-on-secondary-fixed: rgb(17 31 15);
+  --md-sys-color-secondary-fixed-dim: rgb(186 204 178);
+  --md-sys-color-on-secondary-fixed-variant: rgb(60 75 56);
+  --md-sys-color-tertiary-fixed: rgb(188 235 239);
+  --md-sys-color-on-tertiary-fixed: rgb(0 32 34);
+  --md-sys-color-tertiary-fixed-dim: rgb(160 207 211);
+  --md-sys-color-on-tertiary-fixed-variant: rgb(30 77 81);
+  --md-sys-color-surface-dim: rgb(17 20 15);
+  --md-sys-color-surface-bright: rgb(54 58 52);
+  --md-sys-color-surface-container-lowest: rgb(11 15 10);
+  --md-sys-color-surface-container-low: rgb(25 29 23);
+  --md-sys-color-surface-container: rgb(29 33 27);
+  --md-sys-color-surface-container-high: rgb(39 43 37);
+  --md-sys-color-surface-container-highest: rgb(50 54 48);
+  color-scheme: dark;
+}
+
+body {
+  accent-color: var(--md-sys-color-primary);
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  font: var(--md-sys-typography-body-large);
+}
+
+::selection {
+  background-color: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+}
+
+body {
+  --padding-top: 32px;
+  --padding-inline: 32px;
+  margin: 0;
+  min-height: 100dvh;
+  max-width: min(100%, 784px);
+  padding-bottom: 96px;
+}
+
+main {
+  /* top padding + 48 (footer) + 96 (toolbar) */
+  min-height: calc(100dvh - var(--padding-top) - 144px);
+  padding-top: var(--padding-top);
+}
+
+main>* {
+  margin-inline: var(--padding-inline);
+}
+
+@media (min-width: 784px) {
+  body {
+    margin-inline-start: 15rem;
+  }
+  #toc {
+    position: fixed;
+    top: 0;
+    width: 15rem;
+    margin-inline-start: -15rem;
+    padding-top: calc(var(--padding-top) + 32px);
+  }
+}
+
+@media (max-width: 783px) {
+  body {
+    --padding-top: 16px;
+    --padding-inline: 16px;
+  }
+}
+
+#toc ol {
+  list-style-type: none;
+}
+
+footer {
+  padding-top: 32px;
+  padding-inline: var(--padding-inline);
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typography-label-medium);
+  font-family: monospace;
+}
+
+footer span {
+  text-wrap: nowrap;
+}
+
+h1 {
+  font: var(--md-sys-typography-headline-large);
+}
+
+h2 {
+  font: var(--md-sys-typography-headline-small);
+}
+
+h3 {
+  font: var(--md-sys-typography-title-large);
+}
+
+h4 {
+  font: var(--md-sys-typography-title-medium);
+}
+
+pre {
+  max-height: 400px;
+  overflow: auto;
+  padding: 12px;
+  border-radius: 24px;
+  color: var(--md-sys-color-on-surface-variant);
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline);
+}
+
+:not(pre)>code {
+  padding-inline: 4px;
+  border-radius: 4px;
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface-variant);
+}
+
+pre,
+code {
+  font: var(--md-sys-typography-body-large);
+  font-family: monospace;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-inline: 0 !important;
+  box-sizing: border-box;
+}
+
+table {
+  margin-inline: var(--padding-inline);
+  max-width: max-content;
+  border-spacing: 0;
+}
+
+td,
+th {
+  border-block-start: 1px solid var(--md-sys-color-outline-variant);
+  border-inline-start: 1px solid var(--md-sys-color-outline-variant);
+  padding: 8px 16px;
+}
+
+tr:last-of-type td,
+tr:last-of-type th {
+  border-block-end: 1px solid var(--md-sys-color-outline-variant);
+}
+
+tr td:last-of-type,
+tr th:last-of-type {
+  border-inline-end: 1px solid var(--md-sys-color-outline-variant);
+}
+
+th {
+  background-color: var(--md-sys-color-surface-container);
+  text-shadow: 0 1px 1px var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+}
+
+tr th:first-of-type {
+  border-start-start-radius: 24px;
+}
+
+tr th:last-of-type {
+  border-start-end-radius: 24px;
+}
+
+tr:last-of-type td:first-of-type {
+  border-end-start-radius: 24px;
+}
+
+tr:last-of-type td:last-of-type {
+  border-end-end-radius: 24px;
+}
+
+a,
+a code {
+  color: var(--md-sys-color-primary);
+}
+
+a:has(md-button),
+a:has(md-fab),
+a:has(md-icon-button) {
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+label:has(md-checkbox),
+label:has(md-slider),
+label:has(md-switch),
+label:has(md-filled-select),
+label:has(md-outlined-select),
+label:has(md-filled-text-field),
+label:has(md-outlined-text-field) {
+  display: inline-flex;
+  font: var(--md-sys-typography-label-large);
+  gap: 8px;
+  justify-content: space-between;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+label:has(:disabled) {
+  pointer-events: none;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 67ms linear both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 67ms linear both fade-in;
+}
+
+footer {
+  view-transition-name: footer;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

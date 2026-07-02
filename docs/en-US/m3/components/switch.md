@@ -1,0 +1,103 @@
+---
+title: Switch - M3 - SEELE
+---
+
+# Switch
+
+Switches are the preferred way to adjust settings. They're used to control binary options – think On/Off or True/False.
+
+- Follows: [Switches - Material Design 3](https://m3.material.io/components/switch/overview)
+- Inherits: [`ToggleButton`](../../base/classes/toggle-button.md)
+
+<!-- @docs-uncomment
+## Interactive Demo
+
+<sw-demo hascontrols>
+  <label for="switch-interactive">
+    <md-switch id="switch-interactive"></md-switch>
+    Controlled
+  </label>
+
+  <label slot="controls" for="switch-properties-checked">
+    Checked
+    <md-switch id="switch-properties-checked"></md-switch>
+  </label>
+  <label slot="controls" for="switch-properties-disabled">
+    Disabled
+    <md-switch id="switch-properties-disabled"></md-switch>
+  </label>
+  <label slot="controls" for="switch-properties-icons">
+    Icons
+    <md-switch id="switch-properties-icons"></md-switch>
+  </label>
+  <label slot="controls" for="switch-properties-checkedIconOnly">
+    Checked Icon Only
+    <md-switch id="switch-properties-checkedIconOnly"></md-switch>
+  </label>
+</sw-demo>
+@docs-uncomment-end -->
+
+### Usage
+
+Switches may be standalone or pre-checked.
+
+<!-- @docs-demo-code-block -->
+
+```html
+<md-switch aria-label="unchecked switch"></md-switch>
+<md-switch aria-label="pre-checked switch" checked></md-switch>
+```
+
+#### Icons
+
+Icons can be used to visually emphasize the switch's selected state. Switches can choose to display both icons or only selected icons.
+
+<!-- @docs-demo-code-block -->
+
+```html
+<md-switch icons></md-switch>
+<md-switch icons checked></md-switch>
+
+<md-switch icons checkedicononly></md-switch>
+<md-switch icons checkedicononly checked></md-switch>
+```
+
+#### Label
+
+Associate a label with a checkbox using the `<label>` element.
+
+<!-- @docs-demo-code-block -->
+
+```html
+<label>
+  Wi-Fi
+  <md-switch checked></md-switch>
+</label>
+
+<label for="switch-bluetooth">Bluetooth</label>
+<md-switch id="switch-bluetooth"></md-switch>
+```
+
+### Accessibility
+
+Add an `aria-label` attribute to switches without labels or switches whose labels need to be more descriptive.
+
+<!-- @docs-demo-code-block -->
+
+```html
+<md-switch aria-label="Lights"></md-switch>
+
+<label>
+  All
+  <md-switch aria-label="All notifications"></md-switch>
+</label>
+```
+
+Note: switches are not automatically labelled by `<label>` elements and always need an `aria-label`.
+
+## Properties
+
+| Name              | Type    | Default | Description                                    |
+| ----------------- | ------- | ------- | ---------------------------------------------- |
+| `icons`           | Boolean | `false` | Whether to display icons in the switch thumb.  |
+| `checkedIconOnly` | Boolean | `false` | Whether to display the icon only when checked. |
