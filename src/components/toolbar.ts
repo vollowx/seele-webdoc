@@ -1,4 +1,4 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, nothing } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
 import type { M3Menu } from '@vollowx/seele';
 
@@ -32,6 +32,7 @@ export class SwToolbar extends LitElement {
       --margin-start: auto;
       --margin-end: 16px;
     }
+    #language-menu,
     #theme-menu {
       min-width: 200px;
     }
@@ -260,9 +261,8 @@ export class SwToolbar extends LitElement {
       }
     }
 
-    if (!foundLang) {
+    if (!foundLang)
       pathWithoutLang = this._getPathWithoutBase();
-    }
 
     // Build new path with target language (code and prefix are the same)
     const basePrefix = base === '/' ? '/' : base;
@@ -422,13 +422,15 @@ export class SwToolbar extends LitElement {
             data-language="en-US"
             ?selected=${this.language === 'en-US'}
           >
-            English
+            English (US)
+            ${this.language === 'en-US' ? nothing : html`<span slot="supporting-text">英语（美国）</span>`}
           </md-menu-item>
           <md-menu-item
             data-language="zh-CN"
             ?selected=${this.language === 'zh-CN'}
           >
             中文（简体）
+            ${this.language === 'zh-CN' ? nothing : html`<span slot="supporting-text">Chinese (Simplified)</span>`}
           </md-menu-item>
         </md-menu>
       </md-toolbar>
