@@ -22,7 +22,7 @@
     "lightningcss": "^1.32.0"
   },
   "dependencies": {
-    "@vollowx/seele": "^0.12.9",
+    "@vollowx/seele": "^0.12.10",
     "iconify-icon": "^3.0.2"
   }
 }

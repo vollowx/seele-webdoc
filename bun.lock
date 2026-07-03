@@ -221,7 +221,7 @@
 
     "@types/ws": ["@types/ws@7.4.7", "", { "dependencies": { "@types/node": "*" } }, "sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww=="],
 
-    "@vollowx/seele": ["@vollowx/seele@0.12.9", "", { "dependencies": { "@floating-ui/dom": "^1.7.6", "@swc/helpers": "^0.5.23", "lit": "^3.3.3" } }, "sha512-WuNKD3gsRAW6xPE9bPrNNPQwpG2AcjN1EVsZ6rdfkdT308hmn3+SJm6WICRcYFEwDNzE7m1/eM062nCA9OMT3A=="],
+    "@vollowx/seele": ["@vollowx/seele@0.12.10", "", { "dependencies": { "@floating-ui/dom": "^1.7.6", "@swc/helpers": "^0.5.23", "lit": "^3.3.3" } }, "sha512-mLsFJhfUHLrUwTYK7yQJzLA1ghnrrQ3Fkf9yEsFH0DtvAVR0qf+JLVq2SgwntvELBKtek0gpxOEjLkqqIXpRaQ=="],
 
     "@web/config-loader": ["@web/config-loader@0.3.3", "", {}, "sha512-ilzeQzrPpPLWZhzFCV+4doxKDGm7oKVfdKpW9wiUNVgive34NSzCw+WzXTvjE4Jgr5CkyTDIObEmMrqQEjhT0g=="],
 

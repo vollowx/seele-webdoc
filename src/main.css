@@ -160,8 +160,6 @@ footer {
   padding-top: 32px;
   padding-inline: var(--padding-inline);
   color: var(--md-sys-color-on-surface-variant);
-  font: var(--md-sys-typography-label-medium);
-  font-family: monospace;
 }
 
 footer span {

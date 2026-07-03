@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title or page.fileSlug }}</title>
-    <meta name="description" content="{{ desc or 'Documentation of SEELE the web components library.' }}" />
-    <meta name="keywords" content="seele, web components, documentation, components, library, ui, design system" />
+    <meta name="description" content="{{ desc or 'Documentation of seele the web components library.' }}" />
+    <meta name="keywords" content="seele, web components, documentation, components, library, ui, design system, material design, material you" />
     <meta name="author" content="Vollow" />
 
     <link rel="canonical" href="{{ siteUrl }}{{ page.url }}" />
@@ -76,8 +76,11 @@
     </main>
 
     <footer>
-      <span>
-        presenting
+      <p>
+        Copyright © 2022-2026 by Lucas X. Zhao.
+        <a href="https://github.com/vollowx/seele-webdoc">Source</a>.
+        <br />
+        Presenting
         <a
           href="{{ seeleVersion.npmUrl }}"
           target="_blank" rel="noopener noreferrer"
@@ -85,7 +88,7 @@
         >
           @vollowx/seele@{{ seeleVersion.version }}
         </a>
-      </span>
+      </p>
     </footer>
   </body>
 </html>
